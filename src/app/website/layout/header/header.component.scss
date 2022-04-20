@@ -1,0 +1,39 @@
+.container {
+    .header-section {
+        display        : flex;
+        justify-content: space-between;
+
+        .c-tag {
+            border : 2px solid var(--iprimary);
+            padding: 3px;
+        }
+
+        .cart-details {
+            display        : flex;
+            justify-content: center;
+            align-items    : center;
+
+            span {
+                padding: 0px 16px;
+            }
+
+            .ponds {
+                display: flex;
+            }
+
+            .circle {
+                background-color: var(--iprimary);
+                width           : 30px;
+                height          : 30px;
+                padding         : 5px;
+                display         : flex;
+                justify-content : center;
+                align-items     : center;
+                border-radius   : 50%;
+                p{
+                    color: white;
+                }
+            }
+        }
+    }
+}

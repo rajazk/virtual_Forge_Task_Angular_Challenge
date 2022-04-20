@@ -1,0 +1,42 @@
+body {
+    margin : 0;
+    padding: 0;
+}
+
+.website {
+    * {
+        font-family: 'Open Sans', sans-serif;
+    }
+
+    .main-container {
+        background-color: var(--isecondary);
+
+        .container {
+            padding: 10px 0;
+            width  : 90%;
+            margin : auto;
+        }
+    }
+
+    .wrapper {
+        background-color: var(--isecondary);
+
+        .container {
+            padding: 10px 0;
+            width  : 90%;
+            margin : auto;
+        }
+
+    }
+
+    p,
+    h1,
+    h2,
+    h3 {
+        margin: 0;
+    }
+
+    .fa-solid {
+        font-family: 'Font Awesome 5 Free', 'Font Awesome 5 Brands', 'Font Awesome Kit';
+    }
+}

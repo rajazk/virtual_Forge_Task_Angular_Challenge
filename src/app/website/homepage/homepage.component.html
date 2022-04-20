@@ -1,0 +1,84 @@
+<div class="index-container">
+    <div class="top-img">
+        <img src="assets/images/bg.jpg"
+            alt="">
+    </div>
+     
+    <div class="container">
+        <div class="left-portion">
+            <div class="select-box">
+                <select (change)="changeProductOrder()" name="" id="" [(ngModel)]="filter">
+                    <option value="high">Highest Price</option>
+                    <option value="low">Lowest Price</option>
+                    <option value="a-z">A-Z</option>
+                    <option value="z-a">Z-A</option>
+                </select>
+                <i class="fa-solid fa-angle-down"></i>
+            </div>
+
+            <div class="items-container">
+                <div *ngIf="fetching">
+                    <h1>Data fetching. Please wait ....</h1>
+                </div>
+                <ng-container *ngIf="!fetching">
+                    <div *ngFor="let d of dataToShow" class="item">
+                        <div class="item-img">
+                            <img [defaultImage]="defaultImage" [lazyLoad]="d.images[0]?.src" alt="">
+                        </div>
+                        <div class="item-desc">
+                            <p>{{d.title}}</p>
+                            <div class="item-price">
+                                <i class="fa-solid fa-sterling-sign"></i>
+                                <p>{{d.variants[0]?.price}}</p>
+                            </div>
+                        </div>
+                        <div class="items-button">
+                            <button class="add-cart" (click)="addItemToCart(d)">Add to Cart</button>
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+        <div class="right-portion">
+            <div class="cart-header">
+                <h3>Cart</h3>
+                <span class="circle">
+                    <p>{{api.cartItems.length}}</p>
+                </span>
+            </div>
+            <div class="item-details-container">
+                <div *ngIf="api.cartItems.length == 0">
+                    No Items in Cart..
+                </div>
+                <ng-container *ngIf="api.cartItems.length > 0">
+                    <div *ngFor="let item of api.cartItems" class="item-details">
+                        <div class="buyer-details">
+                            <p class="cus-name">{{item.title}}</p>
+                            <p class="product-name">{{item.product_type}}</p>
+                        </div>
+                        <div class="product-details">
+                            <div class="item-price">
+                                <i class="fa-solid fa-sterling-sign"></i>
+                                <p>{{item.variants[0]?.price}}</p>
+                            </div>
+                            <div class="rmv-btn">
+                                <button (click)="removeItemFromCart(item.id)">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+            <div class="total-price" *ngIf="api.cartItems.length > 0">
+                <div class="desc">
+                    <p><b>Total</b></p>
+                    <p>INC &#163;0 in taxes</p>
+                </div>
+                <div class="item-price">
+                    <i class="fa-solid fa-sterling-sign"></i>
+                    <p>{{api.totalCartPrice}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
